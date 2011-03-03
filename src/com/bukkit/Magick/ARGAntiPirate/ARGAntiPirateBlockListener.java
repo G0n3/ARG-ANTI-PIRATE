@@ -1,5 +1,7 @@
 package com.bukkit.Magick.ARGAntiPirate;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,26 +19,14 @@ import org.bukkit.event.block.BlockPlaceEvent;
  * @author Magick
  */
 public class ARGAntiPirateBlockListener extends BlockListener {
-	
+
 	private final ARGAntiPirate	plugin;
 
 	public ARGAntiPirateBlockListener(final ARGAntiPirate plugin) {
 		this.plugin = plugin;
 	}
 
-	public void onBlockPlace(BlockPlaceEvent event) {
-
-		Block placedBlock = event.getBlock();
-		// If the block is a CHEST
-		if (placedBlock.getTypeId() == 54) {
-			
-			
-			plugin.LockedChests.setProperty(placedBlock.getLocation().toString(),event.getPlayer().getName());
-			//plugin.LockedChests.store(new FileOutputStream(file), null);
-
-		}
-
-	}
+	
 
 	// onBlockInteract Start
 	public void onBlockInteract(BlockInteractEvent event) {

@@ -21,6 +21,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class ARGAntiPirate extends JavaPlugin {
 	// private final ARGAntiPiratePlayerListener playerListener = new ARGAntiPiratePlayerListener(this);
 	private final ARGAntiPirateBlockListener	blockListener	= new ARGAntiPirateBlockListener(this);
+	private final BlockPlaceListener	blockPlaceListener	= new BlockPlaceListener(this);
 	private final HashMap<Player, Boolean>		debugees		= new HashMap<Player, Boolean>();
 	static String								maindirectory	= "argantipirate/";
 	static File									ChestLogger		= new File(maindirectory + "Chest.log");
@@ -68,7 +69,7 @@ public class ARGAntiPirate extends JavaPlugin {
 
 		// Register our events
 		PluginManager pm = getServer().getPluginManager();
-
+		pm.registerEvent(Event.Type.BLOCK_PLACED,this.blockPlaceListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_INTERACT, this.blockListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_DAMAGED, this.blockListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_PLACED, this.blockListener, Priority.Normal, this);
