@@ -39,8 +39,7 @@ public class ARGAntiPirate extends JavaPlugin {
 				e.printStackTrace();
 			}
 		}
-		
-		
+
 	}
 
 	public void onEnable() {
@@ -51,14 +50,15 @@ public class ARGAntiPirate extends JavaPlugin {
 		pm.registerEvent(Event.Type.BLOCK_INTERACT, this.blockListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_DAMAGED, this.blockListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_PLACED, this.blockListener, Priority.Normal, this);
-
+		// other crap
 		PluginDescriptionFile pdfFile = this.getDescription();
 		System.out.println(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
 	}
 
 	public void onDisable() {
 		// custom disable code here
-		// All registered events are automatically unregistered when a  plugin is disabled
+		// All registered events are automatically unregistered when a plugin is
+		// disabled
 		System.out.println("ARGAntiPirate Disabeled.");
 	}
 

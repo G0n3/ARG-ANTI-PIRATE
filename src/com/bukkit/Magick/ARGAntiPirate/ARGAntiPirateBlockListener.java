@@ -9,21 +9,37 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockDamageEvent;
 import org.bukkit.event.block.BlockInteractEvent;
 import org.bukkit.event.block.BlockListener;
-
+import org.bukkit.event.block.BlockPlaceEvent;
 
 /**
  * ARGAntiPirate block listener
+ * 
  * @author Magick
  */
 public class ARGAntiPirateBlockListener extends BlockListener {
-    private final ARGAntiPirate plugin;
-    public String stuff ="";
+	private final ARGAntiPirate	plugin;
+	public String				stuff	= "";
 
-    public ARGAntiPirateBlockListener(final ARGAntiPirate plugin) {
-        this.plugin = plugin;
-    }
-    
- // onBlockInteract Start
+	public ARGAntiPirateBlockListener(final ARGAntiPirate plugin) {
+		this.plugin = plugin;
+	}
+
+public void onBlockPlace(BlockPlaceEvent event) {
+	
+	Block placedBlock = event.getBlock();
+	// If the block is a CHEST
+	if (placedBlock.getTypeId() == 54) {
+		
+		
+	}
+	
+		
+	}
+	
+	
+	
+	
+	// onBlockInteract Start
 	public void onBlockInteract(BlockInteractEvent event) {
 		// Get the block we are interacting with
 		Block block = event.getBlock();
@@ -34,8 +50,9 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 			int x = block.getX();
 			int y = block.getY();
 			int z = block.getZ();
-			String LogText = player.getName()+"Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
+			String LogText = player.getName() + "Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
 			chestLog.LogWrite(LogText, ARGAntiPirate.ChestLogger);
+			
 		}
 	}
 
@@ -48,16 +65,17 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 		// If it is not a chest, we dont care
 		if (damagedBlock.getTypeId() == 54) {
 			// Get the player and chest co-ords and log this access
-			
-			
+
 			Player player = event.getPlayer();
 			int x = damagedBlock.getX();
 			int y = damagedBlock.getY();
 			int z = damagedBlock.getZ();
-			String LogText = player.getName()+ "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
+			String LogText = player.getName() + "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
 			chestLog.LogWrite(LogText, ARGAntiPirate.ChestLogger);
+			
 		}
 	}
+
 	// Function to return string for current date-time
 	private String getDateTime() {
 		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");

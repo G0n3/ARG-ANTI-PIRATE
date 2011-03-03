@@ -26,8 +26,8 @@ public class chestLog {
 		return false;
 	}
 
-	public static void LogWrite( String LogText, File file) {
-		
+	public static void LogWrite(String LogText, File file) {
+
 		try {
 
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
