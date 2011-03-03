@@ -1,7 +1,3 @@
-name: MagickMod
-main: com.bukkit.magick.MagickMod.MagickMod
-version: 0.2
-website: http://www.arg-irc.biz
-author: MagickSid
-description: >
-             Anti chest Pirate Protection
+name: ARGAntiPirate
+main: com.bukkit.Magick.ARGAntiPirate.ARGAntiPirate
+version: 0.1
