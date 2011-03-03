@@ -34,8 +34,8 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 			int x = block.getX();
 			int y = block.getY();
 			int z = block.getZ();
-			String s = "Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
-			chestLog.LogWrite(player, s, ARGAntiPirate.ChestLogger);
+			String LogText = player.getName()+"Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
+			chestLog.LogWrite(LogText, ARGAntiPirate.ChestLogger);
 		}
 	}
 
@@ -50,14 +50,12 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 			// Get the player and chest co-ords and log this access
 			
 			
-			
-			
 			Player player = event.getPlayer();
 			int x = damagedBlock.getX();
 			int y = damagedBlock.getY();
 			int z = damagedBlock.getZ();
-			String s = "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
-			chestLog.LogWrite(player, s, ARGAntiPirate.ChestLogger);
+			String LogText = player.getName()+ "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
+			chestLog.LogWrite(LogText, ARGAntiPirate.ChestLogger);
 		}
 	}
 	// Function to return string for current date-time

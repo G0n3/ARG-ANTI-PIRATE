@@ -26,12 +26,12 @@ public class chestLog {
 		return false;
 	}
 
-	public static void LogWrite(Player p, String txt, File file) {
-		String Logtext = p.getName() + ": " + txt;
+	public static void LogWrite( String LogText, File file) {
+		
 		try {
 
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file, true));
-			bw.write(Logtext);
+			bw.write(LogText);
 			bw.newLine();
 			bw.close();
 
