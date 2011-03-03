@@ -8,6 +8,7 @@ import org.bukkit.event.player.PlayerListener;
  * @author Magick
  */
 public class ARGAntiPiratePlayerListener extends PlayerListener {
+	@SuppressWarnings("unused")
 	private final ARGAntiPirate	plugin;
 
 	public ARGAntiPiratePlayerListener(ARGAntiPirate instance) {

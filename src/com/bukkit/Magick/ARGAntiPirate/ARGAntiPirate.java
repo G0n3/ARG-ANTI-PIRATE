@@ -2,6 +2,7 @@ package com.bukkit.Magick.ARGAntiPirate;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Properties;
 
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
@@ -23,7 +24,9 @@ public class ARGAntiPirate extends JavaPlugin {
 	private final HashMap<Player, Boolean>		debugees		= new HashMap<Player, Boolean>();
 	static String								maindirectory	= "argantipirate/";
 	static File									ChestLogger		= new File(maindirectory + "Chest.log");
-
+	static File									ChestData		= new File(maindirectory + "Chest.dat");
+	public Properties LockedChests = new Properties();
+	
 	public ARGAntiPirate(PluginLoader pluginLoader, Server instance, PluginDescriptionFile desc, File folder, File plugin, ClassLoader cLoader) throws IOException {
 		super(pluginLoader, instance, desc, folder, plugin, cLoader);
 		// initialization code here
@@ -39,6 +42,25 @@ public class ARGAntiPirate extends JavaPlugin {
 				e.printStackTrace();
 			}
 		}
+		// check to see if the Chest Data file exists, if not, create it.
+		if (!ChestData.exists()) {
+			try {
+				new File(maindirectory).mkdir();
+				ChestData.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// load chest data file
+		try {
+			FileInputStream in = new FileInputStream(ChestData);
+			LockedChests.load(in);
+		}
+		catch (IOException e) {
+
+		}
+		
 
 	}
 

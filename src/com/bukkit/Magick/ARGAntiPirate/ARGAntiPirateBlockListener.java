@@ -17,42 +17,41 @@ import org.bukkit.event.block.BlockPlaceEvent;
  * @author Magick
  */
 public class ARGAntiPirateBlockListener extends BlockListener {
+	
 	private final ARGAntiPirate	plugin;
-	public String				stuff	= "";
 
 	public ARGAntiPirateBlockListener(final ARGAntiPirate plugin) {
 		this.plugin = plugin;
 	}
 
-public void onBlockPlace(BlockPlaceEvent event) {
-	
-	Block placedBlock = event.getBlock();
-	// If the block is a CHEST
-	if (placedBlock.getTypeId() == 54) {
-		
-		
+	public void onBlockPlace(BlockPlaceEvent event) {
+
+		Block placedBlock = event.getBlock();
+		// If the block is a CHEST
+		if (placedBlock.getTypeId() == 54) {
+			
+			
+			plugin.LockedChests.setProperty(placedBlock.getLocation().toString(),event.getPlayer().getName());
+			//plugin.LockedChests.store(new FileOutputStream(file), null);
+
+		}
+
 	}
-	
-		
-	}
-	
-	
-	
-	
+
 	// onBlockInteract Start
 	public void onBlockInteract(BlockInteractEvent event) {
 		// Get the block we are interacting with
 		Block block = event.getBlock();
 		// If the block is a CHEST
 		if (block.getTypeId() == 54) {
-			// Get the player and chest co-ords and log this access
+			// Get the player and chest coords and log this access
 			Player player = (Player) event.getEntity();
 			int x = block.getX();
 			int y = block.getY();
 			int z = block.getZ();
 			String LogText = player.getName() + "Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
-			chestLog.LogWrite(LogText, ARGAntiPirate.ChestLogger);
-			
+			ChestWriter.LogWrite(LogText, ARGAntiPirate.ChestLogger);
+
 		}
 	}
 
@@ -62,7 +61,7 @@ public void onBlockPlace(BlockPlaceEvent event) {
 	public void onBlockBreak(BlockDamageEvent event) {
 		// Get the block we are interacting with
 		Block damagedBlock = event.getBlock();
-		// If it is not a chest, we dont care
+		// If it is not a chest, we don't care
 		if (damagedBlock.getTypeId() == 54) {
 			// Get the player and chest co-ords and log this access
 
@@ -71,8 +70,8 @@ public void onBlockPlace(BlockPlaceEvent event) {
 			int y = damagedBlock.getY();
 			int z = damagedBlock.getZ();
 			String LogText = player.getName() + "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
-			chestLog.LogWrite(LogText, ARGAntiPirate.ChestLogger);
-			
+			ChestWriter.LogWrite(LogText, ARGAntiPirate.ChestLogger);
+
 		}
 	}
 
