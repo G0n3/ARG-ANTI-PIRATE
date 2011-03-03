@@ -1,5 +1,9 @@
 package com.bukkit.Magick.ARGAntiPirate;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockDamageEvent;
@@ -30,8 +34,8 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 			int x = block.getX();
 			int y = block.getY();
 			int z = block.getZ();
-		//	String s = "Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
-		//	chestLog.LogWrite(player, s, MagickMod.ChestLog);
+			String s = "Chest access @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
+			chestLog.LogWrite(player, s, ARGAntiPirate.ChestLogger);
 		}
 	}
 
@@ -44,13 +48,22 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 		// If it is not a chest, we dont care
 		if (damagedBlock.getTypeId() == 54) {
 			// Get the player and chest co-ords and log this access
+			
+			
+			
+			
 			Player player = event.getPlayer();
 			int x = damagedBlock.getX();
 			int y = damagedBlock.getY();
 			int z = damagedBlock.getZ();
-	//		String s = "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
-	//		chestLog.LogWrite(player, s, MagickMod.ChestLog);
+			String s = "*Chest Destroy* @ " + getDateTime() + "Location: X:" + x + " Y: " + y + " Z: " + z;
+			chestLog.LogWrite(player, s, ARGAntiPirate.ChestLogger);
 		}
 	}
-    
+	// Function to return string for current date-time
+	private String getDateTime() {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+		Date date = new Date();
+		return dateFormat.format(date);
+	}
 }

@@ -18,12 +18,11 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author Magick
  */
 public class ARGAntiPirate extends JavaPlugin {
-	// private final ARGAntiPiratePlayerListener playerListener = new
-	// ARGAntiPiratePlayerListener(this);
+	// private final ARGAntiPiratePlayerListener playerListener = new ARGAntiPiratePlayerListener(this);
 	private final ARGAntiPirateBlockListener	blockListener	= new ARGAntiPirateBlockListener(this);
 	private final HashMap<Player, Boolean>		debugees		= new HashMap<Player, Boolean>();
 	static String								maindirectory	= "argantipirate/";
-	static File									ChestData		= new File(maindirectory + "chest.data");
+	static File									ChestLogger		= new File(maindirectory + "Chest.log");
 
 	public ARGAntiPirate(PluginLoader pluginLoader, Server instance, PluginDescriptionFile desc, File folder, File plugin, ClassLoader cLoader) throws IOException {
 		super(pluginLoader, instance, desc, folder, plugin, cLoader);
@@ -31,15 +30,17 @@ public class ARGAntiPirate extends JavaPlugin {
 		// NOTE: Event registration should be done in onEnable not here
 		// all events are unregistered when a plugin is disabled
 
-		// check to see if the data file exists, if not, create it.
-		if (!ChestData.exists()) {
+		// check to see if the ChestLogger file exists, if not, create it.
+		if (!ChestLogger.exists()) {
 			try {
 				new File(maindirectory).mkdir();
-				ChestData.createNewFile();
+				ChestLogger.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		
+		
 	}
 
 	public void onEnable() {
