@@ -28,8 +28,9 @@ public class ARGAntiPirate extends JavaPlugin {
 	static File									ChestData		= new File(maindirectory + "Chest.dat");
 	public Properties LockedChests = new Properties();
 	
-	public ARGAntiPirate(PluginLoader pluginLoader, Server instance, PluginDescriptionFile desc, File folder, File plugin, ClassLoader cLoader) throws IOException {
-		super(pluginLoader, instance, desc, folder, plugin, cLoader);
+	
+
+	public void onEnable() {
 		// initialization code here
 		// NOTE: Event registration should be done in onEnable not here
 		// all events are unregistered when a plugin is disabled
@@ -62,11 +63,6 @@ public class ARGAntiPirate extends JavaPlugin {
 
 		}
 		
-
-	}
-
-	public void onEnable() {
-
 		// Register our events
 		PluginManager pm = getServer().getPluginManager();
 		pm.registerEvent(Event.Type.BLOCK_PLACED,this.blockPlaceListener, Priority.Normal, this);
