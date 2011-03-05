@@ -68,7 +68,7 @@ public class ARGAntiPirate extends JavaPlugin {
 		pm.registerEvent(Event.Type.BLOCK_PLACED,this.blockPlaceListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_INTERACT, this.blockListener, Priority.Normal, this);
 		pm.registerEvent(Event.Type.BLOCK_DAMAGED, this.blockListener, Priority.Normal, this);
-		pm.registerEvent(Event.Type.BLOCK_PLACED, this.blockListener, Priority.Normal, this);
+		pm.registerEvent(Event.Type.BLOCK_BREAK, this.blockListener, Priority.Normal, this);
 		// other crap
 		PluginDescriptionFile pdfFile = this.getDescription();
 		System.out.println(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");

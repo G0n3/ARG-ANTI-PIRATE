@@ -52,10 +52,11 @@ public class ARGAntiPirateBlockListener extends BlockListener {
 		// Get the block we are interacting with
 		Block damagedBlock = event.getBlock();
 		// If it is not a chest, we don't care
+		plugin.getServer().broadcastMessage("Block Type:" +damagedBlock.getTypeId());
 		if (damagedBlock.getTypeId() == 54) {
 			// Get the player and chest co-ords and log this access
 
-			Player player = event.getPlayer();
+			Player player = (Player) event.getPlayer();
 			int x = damagedBlock.getX();
 			int y = damagedBlock.getY();
 			int z = damagedBlock.getZ();
